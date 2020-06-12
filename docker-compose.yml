@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_DB=myPGDB
+      # running psql: psql -d myPGDB -U myPGUser
+      # default port: 5432
+      - POSTGRES_USER=myPGUser
+      - POSTGRES_PASSWORD=myPGPassword
+  dev:
+    container_name: db-playspace-dev
+    build:
+      context: .
+      dockerfile: ./docker/dockerfile-dev
+    volumes:
+      - ./code:/code
+      - ./data:/data
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres

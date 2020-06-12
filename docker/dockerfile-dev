@@ -1,0 +1,18 @@
+FROM python:3.6
+
+# to se unbuffered logs
+ENV PYTHONUNBUFFERED 1
+
+COPY ./code /code
+WORKDIR /code
+RUN python -m pip install -r requirements.txt
+
+COPY ./data /data
+
+RUN chown -R $USER:$USER /code
+RUN chown -R $USER:$USER /data
+
+USER $USER
+
+# keep container alive
+CMD /bin/bash -c "while true; do sleep 1h; done"

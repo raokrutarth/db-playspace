@@ -6,3 +6,17 @@ containers and a python envoirnment with all the necessary DB libraries already 
 ## Supported Databases
 
 - Postgress
+
+## Instructions
+
+### Setup
+
+```bash
+make build-and-start
+```
+
+### Usage
+
+```bash
+./enter-dev
+```

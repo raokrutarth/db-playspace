@@ -9,6 +9,11 @@ services:
       # default port: 5432
       - POSTGRES_USER=myPGUser
       - POSTGRES_PASSWORD=myPGPassword
+
+  redis:
+    # port: 6379
+    image: redis:alpine
+
   dev:
     container_name: db-playspace-dev
     build:
@@ -21,3 +26,4 @@ services:
       - "8000:8000"
     depends_on:
       - postgres
+      - redis
